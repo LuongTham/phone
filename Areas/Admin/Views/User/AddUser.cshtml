@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@*Khai bao folder Models de co the tac dong vao class.user.cs*@
+@using Phone.Models
+
+<div class="col-md-8 col-xs-offset-2" style="margin-top:10px">
+    @model User
+    @if (Request.QueryString["email"] == "exits")
+    {
+        <div>Email đã tồn tại</div>
+    }
+    <div class="panel panel-primary" style="border:solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border:solid 1px #d8373e">Add User</div>
+        <div class="panel-body">
+            <form method="post" action="@ViewBag.formAction">
+                @Html.AntiForgeryToken() @*Token de xac thuc bao mat trong mvc framwork-> tranh 1 so loi bao mat*@
+                <!-- rows -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Name</div>
+                    <div class="col-md-10">
+                        <input type="text" value="@if (Model != null) {@Model.fullname }" class="form-control" name="fullname" required>
+                    </div>
+                </div>
+                <!-- end rows -->
+                <!-- rows -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Email</div>
+                    <div class="col-md-10">
+                        <input type="email" @if (Model != null) { <text> value="@Model.email" disabled</text>} name="email" class="form-control" required>
+                    </div>
+                </div>
+                <!-- end rows -->
+                <!-- rows -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Password</div>
+                    <div class="col-md-10">
+                        <input type="password" name="password" class="form-control" @if (Model != null) { <text> placeholder="Không đổi password thì không nhập vào ô này" </text>  } else { <text> required</text>}>
+                    </div>
+                </div>
+                <!-- end rows -->
+                <!-- rows -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        <input style="background-color:#d8373e; border:solid 1px #d8373e" type="submit" value="Process" class="btn btn-primary">
+                    </div>
+                </div>
+                <!-- end rows -->
+            </form>
+        </div>
+    </div>
+</div>
+

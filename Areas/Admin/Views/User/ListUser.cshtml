@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "ListUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using Phone.Models 
+@using PagedList.Mvc
+@model PagedList.IPagedList<User>
+<div class="col-md-8 col-xs-offset-2" style="margin-top:10px">
+    <div style="margin-bottom:5px;">
+        <a href="/Admin/User/Add" class="btn btn-primary" style="border:solid 1px #d8373e; background-color: #d8373e;">Add user</a>
+    </div>
+    <div class="panel panel-primary" style="border:solid 1px #d8373e;">
+        <div class="panel-heading" style="border:solid 1px #d8373e; background-color: #d8373e;">List User</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th style="text-align:center">Name</th>
+                    <th style="text-align:center">Email</th>
+                    <th style="width:100px;"></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.fullname</td>
+                        <td>@item.email</td>
+                        <td style="text-align:center;">
+                            <a style="color: #d8373e" href="/Admin/User/Edit/@item.id">Edit</a>&nbsp;
+                            <a style="color: #d8373e" href="/Admin/User/Delete/@item.id" onclick="return window.confirm('Are you sure?');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <style type="text/css">
+                .pagination {
+                    padding: 0px;
+                    margin: 0px;
+                    background-color: #d9534f;
+                    border: solid 1px #d43f3a;
+                }
+            </style>
+            @Html.PagedListPager(Model, page => Url.Action("ListUser", new { page }))
+        </div>
+    </div>
+</div>
+

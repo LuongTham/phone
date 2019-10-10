@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "AddtNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using Phone.Models
+@model News
+
+<div class="col-md-8 col-xs-offset-2" style=" margin-top: 10px; border-color:#d8373e !important ">
+    <div class="panel panel-primary" style="border:solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border:solid 1px #d8373e">Add News</div>
+        <div class="panel-body">
+            <form method="post" action="@ViewBag.formAction" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Tiêu đề</div>
+                    <div class="col-md-9">
+                        <input type="text" name="name" class="form-control" value="@if (Model != null) {@Model.name} ">
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Giá</div>
+                    <div class="col-md-9">
+                        <input type="text" name="name" class="form-control" value="@if (Model != null) {@Model.price} ">
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Giới thiệu</div>
+                    <div class="col-md-9">
+                        <textarea name="description" class="form-control" style="height:250px;">		
+			            	@if (Model != null) { @Model.description}
+					    </textarea>
+                        <script>
+                            CKEDITOR.replace("description");
+                        </script>
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Chi tiết</div>
+                    <div class="col-md-9">
+                        <textarea name="content" class="form-control" style="height:300px;">
+                             	@if (Model != null) { @Model.content}
+					    </textarea>
+                        <script>
+                            CKEDITOR.replace("content");
+                        </script>
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        <input type="checkbox" @if (Model != null && Model.hotnews == true) { <text> checked</text> } name="hotnews" id="hotnews"> <label for="hotnews">Tin nổi bật</label>
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Ảnh</div>
+                    <div class="col-md-9">
+                        <input type="file" name="img">
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        <input style="background-color:#d8373e" type="submit" class="btn btn-primary" value="Process">
+                    </div>
+                </div>
+                <!-- end row -->
+            </form>
+        </div>
+    </div>
+</div>
+

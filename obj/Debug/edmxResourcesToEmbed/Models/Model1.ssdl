@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="brand_id" />
+    </Key>
+    <Property Name="brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Brand_Name" Type="nchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id_Category" />
+    </Key>
+    <Property Name="id_Category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" />
+    <Property Name="hotcategory" Type="bit" />
+    <Property Name="img" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id_Customer" />
+    </Key>
+    <Property Name="id_Customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="500" />
+    <Property Name="Password" Type="nchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="id_News" />
+    </Key>
+    <Property Name="id_News" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="content" Type="ntext" />
+    <Property Name="img" Type="nvarchar" MaxLength="500" />
+    <Property Name="hotnews" Type="bit" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="ProdSale">
+    <Key>
+      <PropertyRef Name="id_prodSale" />
+    </Key>
+    <Property Name="id_prodSale" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" />
+    <Property Name="img" Type="nvarchar" MaxLength="500" />
+    <Property Name="newprice" Type="int" />
+    <Property Name="oldprice" Type="int" />
+    <Property Name="Random" Type="bit" />
+    <Property Name="Bestseller" Type="bit" />
+    <Property Name="HotSale" Type="bit" />
+    <Property Name="HotDeals" Type="bit" />
+    <Property Name="brand_id" Type="int" />
+    <Property Name="id_Category" Type="int" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id_Product" />
+    </Key>
+    <Property Name="id_Product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Category" Type="int" />
+    <Property Name="brand_id" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="content" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar" MaxLength="500" />
+    <Property Name="hotproduct" Type="bit" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="Slide_id" />
+    </Key>
+    <Property Name="Slide_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="500" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="500" />
+    <Property Name="password" Type="nvarchar" MaxLength="500" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="500" />
+    <Property Name="phone" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityContainer Name="PhoneModelStoreContainer">
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProdSale" EntityType="Self.ProdSale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

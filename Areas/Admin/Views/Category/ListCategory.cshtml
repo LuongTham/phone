@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "ListCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using Phone.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<Category>
+
+<div class="col-md-6 col-xs-offset-3" style="margin-top:20px;">
+    <div style="margin-bottom:2px;">
+        <a href="/Admin/Category/Add" class="btn btn-primary" style="background-color:#d8373e">Add Category</a>
+    </div>
+    <div class="panel panel-primary" style="border:solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border:solid 1px #d8373e">ListCategory</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th style="width:150px">Tên danh mục</th>
+                    <th style="width:200px;">Ảnh</th>
+                    <th style="width:100px">Hot Category</th>
+                    <th style="width:100px;">Quản lý</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.name</td>
+                    <td style="text-align:center;">
+                        @* Server.MapPath("folder") -> lay full duong dan vat ly *@
+                        @if (System.IO.File.Exists(Server.MapPath("~/Assets/Upload/Product/") + item.img))
+                        {
+                            <img src="~/Assets/Upload/Product/@item.img" style="width:100px;" />
+                        }
+                    </td>
+                    <td style="text-align:center">
+                        @if (item.hotcategory == true)
+                        {
+                            <span class="glyphicon glyphicon-check"></span>
+                        }
+
+                    <td style="text-align:center">
+                        <a style="color: #d8373e" href="/Admin/Category/Edit/@item.id_Category">Edit</a>&nbsp;|&nbsp;
+                        <a style="color: #d8373e" href="/Admin/Category/Delete/@item.id_Category" onclick="return window.confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+                }
+            </table>
+            <style type="text/css">
+                .pagination {
+                    padding: 0px;
+                    margin: 0px;
+                    background-color: #d9534f;
+                    border: solid 1px #d43f3a;
+                }
+            </style>
+            @Html.PagedListPager(Model, page => Url.Action("ListCategory", new { page }))
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "ListNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using Phone.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<News>
+
+<div class="col-md-12" style="margin-top: 10px ">
+    <div style="margin-bottom:5px;">
+        <a href="/Admin/News/Add" class="btn btn-primary" ; style="background-color:#d8373e">Add News </a>
+    </div>
+    <div class="panel panel-primary" , style="border:solid 1px #d8373e">
+        <div class="panel-heading" , style="background-color:#d8373e; border:solid 1px #d8373e">List News</div>
+        <div class="panel-body">
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th style="width:50px;text-align:center">STT</th>
+                    <th style="width:100px;text-align:center">Ảnh</th>
+                    <th style="text-align:center">Tiêu đề</th>
+                    <th style="text-align:center"> Giới thiệu</th>
+                    <th style="text-align:center"> Price </th>
+                    <th style="width:100px;text-align:center">Hot news</th>
+                    <th style="text-align:center">chi tiết</th>
+                    <th style="width:100px;text-align:center">Quản lý</th>
+                </tr>
+                @{
+                    int stt = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    stt++;
+                <tr>
+                    <td style="text-align:center;">@stt</td>
+                    @*Server.mappath()("folder") -> lay full duong dan vat ly*@ @*Cach 2 la xet item.img != null*@
+                    <td style="text-align:center;">
+                        @if (System.IO.File.Exists(Server.MapPath("~/Assets/Upload/News/") + item.img) == true)
+                        {
+                            <img src="~/Assets/Upload/News/@item.img" style="width:200px;" />
+                        }
+                    </td>
+                    <td>@item.name</td>
+                    <td style="text-align:left">@item.description</td>
+                    <td style="text-align:left">@item.price</td>
+                    <td style="text-align:center">
+                        @if (item.hotnews == true)
+                        {
+                            <span class="glyphicon glyphicon-check"></span>
+                        }
+                    </td>
+                    <td style="text-align:left">@item.content</td>
+                    <td style="text-align:center;">
+                        <a style="color: #d8373e" href="/Admin/News/Edit/@item.id_News">Edit</a>&nbsp;
+
+                        <a style="color: #d8373e" href="/Admin/News/Delete/@item.id_News" onclick="return window.confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+                }
+            </table>
+            <style type="text/css">
+                .pagination {
+                    padding: 0px;
+                    background-color: #d9534f;
+                    border: solid 1px #d43f3a;
+                    margin: 0px;
+                }
+            </style>
+            @Html.PagedListPager(Model, page => Url.Action("ListNews", new { page }))
+        </div>
+    </div>
+</div>
+

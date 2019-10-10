@@ -1,0 +1,568 @@
+﻿@using Phone.Models
+@{
+    Layout = null;
+}
+@using Phone.Models;
+@{ 
+    PhoneEntities db = new PhoneEntities();
+    var hotProd = db.Products.Where(tbl=> tbl.hotproduct == true).OrderByDescending(tbl => tbl.id_Product ).ToList();
+    var newProd = db.Products.OrderByDescending(tbl => tbl.id_Product).ToList();
+    var Random = db.ProdSales.Where(tbl => tbl.Random == true).OrderByDescending(tbl => tbl.id_prodSale).ToList();
+    var Bestseller = db.ProdSales.Where(tbl => tbl.Bestseller == true).OrderByDescending(tbl => tbl.id_prodSale).ToList();
+    var HotSale = db.ProdSales.Where(tbl => tbl.HotSale == true).OrderByDescending(tbl => tbl.id_prodSale).ToList();
+    var HotDeal = db.ProdSales.Where(tbl => tbl.HotDeals == true).OrderByDescending(tbl => tbl.id_prodSale).ToList();
+    var Slide = db.Slides.OrderByDescending(tbl => tbl.Slide_id).ToList();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="#">
+
+    <title>Galio</title>
+    <link href="~/Assets/Frontend/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/Frontend/css/nivo-slider.css" rel="stylesheet">
+    <link href="~/Assets/Frontend/css/animate.css" rel="stylesheet">
+    <link href="~/Assets/Frontend/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/Assets/Frontend/css/style.css" rel="stylesheet">
+    <link href="~/Assets/Frontend/css/responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-md-offset-3">
+                    <div class="flexslider ma-nivoslider">
+                        <div class="ma-loading"></div>
+                        <div id="ma-inivoslider-banner7" class="slides">
+                            @foreach (var item in Slide)
+                            {
+                                <img src="~/Assets/upload/Slide/@item.img" class="dn" alt="" title="#banner7-caption1" />
+                            }
+                        </div>
+
+                        <div id="banner7-caption1" class="banner7-caption nivo-html-caption nivo-caption">
+                            <div class="timethai"></div>
+                            <div class="banner7-content slider-1">
+                                <div class="title-container">
+                                    <h1 class="title1">headphones az12</h1>
+                                    <h2 class="title2">Typi non habent claritatem insitam; est usus legentis</h2>
+                                </div>
+                                <div class="banner7-des">
+                                    <div class="des">
+                                        <h1>sale up to!</h1>
+                                        <h2>30% off</h2>
+                                        <div class="check-box">
+                                            <ul class="list-unstyled">
+                                                <li>With all products in shop</li>
+                                                <li>All combos $69.96</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img1" src="/Assets/Frontend/images/slider/img-04.png" alt="" />
+                            </div>
+                        </div>
+                        <div id="banner7-caption2" class="banner7-caption nivo-html-caption nivo-caption">
+                            <div class="timethai"></div>
+                            <div class="banner7-content slider-2">
+                                <div class="title-container">
+                                    <h1 class="title1">Samsung s5</h1>
+                                    <h2 class="title2">Typi non habent claritatem insitam; est usus legentis</h2>
+                                </div>
+                                <div class="banner7-des">
+                                    <div class="des">
+                                        <h1>sale up to!</h1>
+                                        <h2>50% off</h2>
+                                    </div>
+                                </div>
+                                <img class="img1" src="/Assets/Frontend/images/slider/img-05.png" alt="" />
+                            </div>
+                        </div>
+                    </div><!-- /.flexslider -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="banner-left">
+                        <a href="#"><img src="/Assets/Frontend/images/ads/ads-01.jpg" alt=""></a>
+                        <div class="banner-content">
+                            <h1>sale up to</h1>
+                            <h2>20% off</h2>
+                            <p>on selected products</p>
+                            <a href="#">buy now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="banner banner-double"><a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-02.jpg"></a></div>
+                    <div class="banner banner-double"><a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-03.jpg"></a></div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="banner"><a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-04.jpg"></a></div>
+                </div>
+            </div><!-- /advertisement -->
+
+            <div class="row">
+                <div class="col-sm-3 col-left">
+                    <div class="timely">
+                        <div class="title-group"><h2>hot deals</h2></div>
+                        <div id="timely-owl" class="owl-container">
+                            <div class="owl">
+                                @foreach (var item in HotDeal)
+                                {
+                                    <div class='timer-item item'>
+                                        <div class="item-inner">
+                                            <div class="images-container">
+                                                <a href="#" title="Fusce aliquam" class="product-image"><img src="~/Assets/upload/Product/@item.img" alt="Fusce aliquam" /></a>
+                                                <div class="box-timer">
+                                                    <div class="countbox_1 timer-grid"></div>
+                                                </div>
+                                            </div>
+                                            <div class="content-box">
+                                                <h2 class="product-name"><a href="#" title="Fusce aliquam">@item.name</a></h2>
+                                                <div class="price-box">
+                                                    <p class="special-price">
+                                                        <span class="price-label">Special Price</span>
+                                                        <span class="price">@item.newprice</span>
+                                                    </p>
+                                                    <p class="old-price">
+                                                        <span class="price-label">Regular Price: </span>
+                                                        <span class="price">@item.oldprice</span>
+                                                    </p>
+                                                </div>
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                        <div class="rating" style="width:67%"></div>
+                                                    </div>
+                                                    <span class="amount"><a href="#">1 Review(s)</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div><!-- /.timely -->
+                    @Html.Partial("~/Views/Shared/_SpecialOffer.cshtml")
+                </div><!-- /.col-left -->
+                <div class="col-sm-9 col-right">
+                    <div class="featuredproductslider-container">
+                        <div class="title-group1"><h2>Hot Product</h2></div>
+                        <div id="featured-products" class="owl-container">
+                            <div class="owl">
+                                @foreach (var item in hotProd)
+                                {
+                                    <div class='productslider-item item'>
+                                        <div class="item-inner">
+                                            <div class="images-container">
+                                                <div class="product_icon">
+                                                    <div class='new-icon'><span>new</span></div>
+                                                </div>
+                                                <a href="/Category/DetailsPage/@item.id_Product" title="" class="product-image">
+                                                    <img src="~/Assets/upload/Product/@item.img" alt="Nunc facilisis" />
+                                                </a>
+                                                <div class="box-hover">
+                                                    <ul class="add-to-links">
+                                                        <li><a href="#" class="link-quickview">Quick View</a></li>
+                                                        <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
+                                                        <li><a href="#" class="link-compare">Add to Compare</a></li>
+                                                        <li><a href="#" class="link-cart">Add to Cart</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="des-container">
+                                                <h2 class="product-name"><a href="/Category/DetailsPage/@item.id_Product" title="Nunc facilisis">@item.name</a></h2>
+                                                <div class="price-box">
+                                                    <p class="special-price">
+                                                        <span class="price-label">Special Price</span>
+                                                        <span class="price">@item.price</span>
+                                                    </p>
+                                                </div>
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                        <div class="rating" style="width:67%"></div>
+                                                    </div>
+                                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div><!-- /.featuredproductslider-container -->
+                    <div class="row">
+                        <div class="col-smc-7">
+                            <div class="banner">
+                                <a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-06.jpg"></a>
+                            </div>
+                        </div>
+                        <div class="col-smc-5">
+                            <div class="banner">
+                                <a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-07.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="newproductslider-container">
+                        <div class="title-group1"><h2>New Product</h2></div>
+                        <div id="new-products" class="owl-container">
+                            <div class="owl">
+                                @foreach (var item in newProd)
+                                {
+                                    <div class='productslider-item item'>
+                                        <div class="item-inner">
+                                            <div class="images-container">
+                                                <div class="product_icon">
+                                                    <div class='new-icon'><span>new</span></div>
+                                                    <div class="sale-icon"><span>sale</span></div>
+                                                </div>
+                                                <a href="/Category/DetailsPage/@item.id_Product" title="@item.name" class="product-image">
+                                                    <img src="~/Assets/upload/Product/@item.img" alt="Nunc facilisis" />
+                                                </a>
+                                                <div class="box-hover">
+                                                    <ul class="add-to-links">
+                                                        <li><a href="#" class="link-quickview">Quick View</a></li>
+                                                        <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
+                                                        <li><a href="#" class="link-compare">Add to Compare</a></li>
+                                                        <li><a href="#" class="link-cart">Add to Cart</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="des-container">
+                                                <h2 class="product-name"><a href="/Category/DetailsPage/@item.id_Product" title="Nunc facilisis">@item.name</a></h2>
+                                                <div class="price-box">
+                                                    <p class="special-price">
+                                                        <span class="price-label">Special Price</span>
+                                                        <span class="price">@item.price</span>
+                                                    </p>
+                                                </div>
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                        <div class="rating" style="width:67%"></div>
+                                                    </div>
+                                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div><!-- /.newproductslider-container -->
+                    <div class="row">
+                        <div class="col-smc-7">
+                            <div class="banner">
+                                <a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-06.jpg"></a>
+                            </div>
+                        </div>
+                        <div class="col-smc-5">
+                            <div class="banner">
+                                <a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-07.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="title-group"><h2>Random</h2></div>
+                            <div class="product-list">
+                                @for (int i = 0; i < 4; i++)
+                                {
+                                    <div class="products-grid">
+                                        <div class="images-container">
+                                            <a class="product-image" title="Accumsan elit " href="#"><img alt="Accumsan elit " src="~/Assets/upload/Product/@Random[i].img"></a>
+                                        </div>
+                                        <div class="des-container">
+                                            <h2 class="product-name"><a title="Accumsan elit " href="#">@Random[i].name </a></h2>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <div style="width:67%" class="rating"></div>
+                                                </div>
+                                                <span class="amount"><a href="#">1 Review(s)</a></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <p class="special-price">
+                                                    <span class="price">@Random[i].newprice</span>
+                                                </p>
+                                                <p class="old-price">
+                                                    <span class="price">@Random[i].oldprice</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div><!-- /.product-list -->
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="title-group"><h2>Bestseller</h2></div>
+                            <div class="product-list">
+                                @for (int i = 0; i < 4; i++)
+                                {
+                                    <div class="products-grid">
+                                        <div class="images-container">
+                                            <a class="product-image" title="Accumsan elit " href="#"><img alt="Accumsan elit " src="~/Assets/Upload/Product/@Bestseller[i].img"></a>
+                                        </div>
+                                        <div class="des-container">
+                                            <h2 class="product-name"><a title="Accumsan elit " href="#">@Bestseller[i].name</a></h2>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <div style="width:67%" class="rating"></div>
+                                                </div>
+                                                <span class="amount"><a href="#">1 Review(s)</a></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <p class="special-price">
+                                                    <span class="price">@Bestseller[i].newprice</span>
+                                                </p>
+                                                <p class="old-price">
+                                                    <span class="price">@Bestseller[i].oldprice</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div><!-- /.product-list -->
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="title-group"><h2>Hot sale</h2></div>
+                            <div class="product-list">
+                                @for (int i = 0; i < 4; i++)
+                                {
+                                    <div class="products-grid">
+                                        <div class="images-container">
+                                            <a class="product-image" title="Accumsan elit " href="#"><img alt="Accumsan elit " src="~/Assets/upload/Product/@HotSale[i].img"></a>
+                                        </div>
+                                        <div class="des-container">
+                                            <h2 class="product-name"><a title="Accumsan elit " href="#">@HotSale[i].name </a></h2>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <div style="width:67%" class="rating"></div>
+                                                </div>
+                                                <span class="amount"><a href="#">1 Review(s)</a></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <p class="special-price">
+                                                    <span class="price">@HotSale[i].newprice</span>
+                                                </p>
+                                                <p class="old-price">
+                                                    <span class="price">@HotSale[i].oldprice</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div><!-- /.product-list -->
+                        </div>
+                    </div>
+                </div><!-- /.col-right -->
+            </div>
+        </div>
+    </div><!-- /.main -->
+    @Html.Partial("~/Views/Shared/_TopCategory.cshtml")
+
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="~/Assets/Frontend/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Frontend/js/jquery.nivo.slider.pack.js"></script>
+    <script src="~/Assets/Frontend/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Frontend/js/main.js"></script>
+    <script type="text/javascript">
+        /* Main Slideshow */
+        $(window).load(function () {
+            $(document).off('mouseenter').on('mouseenter', '.pos-slideshow', function (e) {
+                $('.ma-banner7-container .timethai').addClass('pos_hover');
+            });
+            $(document).off('mouseleave').on('mouseleave', '.pos-slideshow', function (e) {
+                $('.ma-banner7-container .timethai').removeClass('pos_hover');
+            });
+        });
+        $(window).load(function () {
+            $('#ma-inivoslider-banner7').nivoSlider({
+                effect: 'random',
+                slices: 15,
+                boxCols: 8,
+                boxRows: 4,
+                animSpeed: 1000,
+                pauseTime: 6000,
+                startSlide: 0,
+                controlNav: false,
+                controlNavThumbs: false,
+                pauseOnHover: true,
+                manualAdvance: false,
+                prevText: 'Prev',
+                nextText: 'Next',
+                afterLoad: function () {
+                },
+                beforeChange: function () {
+                },
+                afterChange: function () {
+                }
+            });
+        });
+        $(document).ready(function () {
+            /* timely-owl */
+            $("#timely-owl .owl").owlCarousel({
+                autoPlay: false,
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [991, 1],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 1000,
+                paginationSpeed: 1000,
+                rewindSpeed: 1000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+            /* special-offer slider */
+            $("#special-offer .owl").owlCarousel({
+                autoPlay: false,
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [991, 1],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                rewindSpeed: 3000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+            /* latest-news slider */
+            $("#latest-news .owl").owlCarousel({
+                autoPlay: false,
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [991, 1],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 1000,
+                paginationSpeed: 1000,
+                rewindSpeed: 1000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+            /* clients-say slider */
+            $("#clients-say .owl").owlCarousel({
+                autoPlay: false,
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [991, 1],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                rewindSpeed: 3000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+            /* featured-products slider */
+            $("#featured-products .owl").owlCarousel({
+                autoPlay: false,
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [991, 2],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                rewindSpeed: 3000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+            /* new-products slider */
+            $("#new-products .owl").owlCarousel({
+                autoPlay: false,
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [991, 2],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                rewindSpeed: 3000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+        });
+    </script>
+
+    <!-- Hot Deals Timer 1-->
+    <script type="text/javascript">
+        var dthen1 = new Date("12/25/33 11:59:00 PM");
+        start = "08/04/15 03:02:11 AM";
+        start_date = Date.parse(start);
+        var dnow1 = new Date(start_date);
+        if (CountStepper > 0)
+            ddiff = new Date((dnow1) - (dthen1));
+        else
+            ddiff = new Date((dthen1) - (dnow1));
+        gsecs1 = Math.floor(ddiff.valueOf() / 1000);
+
+        var iid1 = "countbox_1";
+        CountBack_slider(gsecs1, "countbox_1", 1);
+    </script>
+    <!-- Hot Deals Timer 2-->
+    <script type="text/javascript">
+        var dthen2 = new Date("05/21/26 11:59:00 PM");
+        start = "08/04/15 03:02:11 AM";
+        start_date = Date.parse(start);
+        var dnow2 = new Date(start_date);
+        if (CountStepper > 0)
+            ddiff = new Date((dnow2) - (dthen2));
+        else
+            ddiff = new Date((dthen2) - (dnow2));
+        gsecs2 = Math.floor(ddiff.valueOf() / 1000);
+
+        var iid2 = "countbox_2";
+        CountBack_slider(gsecs2, "countbox_2", 2);
+    </script>
+    <!-- Hot Deals Timer 3-->
+    <script type="text/javascript">
+        var dthen3 = new Date("05/21/33 11:59:00 PM");
+        start = "08/04/15 03:02:11 AM";
+        start_date = Date.parse(start);
+        var dnow3 = new Date(start_date);
+        if (CountStepper > 0)
+            ddiff = new Date((dnow3) - (dthen3));
+        else
+            ddiff = new Date((dthen3) - (dnow3));
+        gsecs3 = Math.floor(ddiff.valueOf() / 1000);
+
+        var iid3 = "countbox_3";
+        CountBack_slider(gsecs3, "countbox_3", 3);
+    </script>
+</body>
+</html>
+

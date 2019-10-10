@@ -1,0 +1,44 @@
+﻿
+
+@{
+    ViewBag.Title = "AddSlide";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using Phone.Models
+@model Slide
+<div class="col-md-8 col-xs-offset-2" style="margin-top:20px;">
+    <div class="panel panel-primary" style="border:solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border:solid 1px #d8373e">Add Slide</div>
+        <div class="panel-body">
+            <form method="post" action="@ViewBag.formAction" enctype="multipart/form-data">
+                <!-- rows -->
+                @Html.AntiForgeryToken()
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Name</div>
+                    <div class="col-md-10">
+                        <input type="text" value="@if(Model!=null){@Model.Slide_id}" name="name" class="form-control" required>
+                    </div>
+
+                </div>
+
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Ảnh</div>
+                    <div class="col-md-9">
+                        <input type="file" name="img">
+                    </div>
+                </div>
+
+                <!-- end rows -->
+                <!-- rows -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        <input style="background-color:#d8373e" type="submit" value="Process" class="btn btn-primary">
+                    </div>
+                </div>
+                <!-- end rows -->
+            </form>
+        </div>
+    </div>
+</div>
+

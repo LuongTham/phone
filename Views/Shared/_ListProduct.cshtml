@@ -1,0 +1,60 @@
+﻿@using Phone.Models
+@{
+    Layout = null;
+}
+@{
+    PhoneEntities db = new PhoneEntities();
+    var listproduct = db.Products.OrderByDescending(tbl => tbl.id_Product).ToList();
+}
+
+<ol id="products-list" class="products-list">
+    @for(int i = 0; i < 5; i ++)
+    {
+    <li class="item">
+        <div class="item-inner">
+            <div class="row">
+                <div class="col-sm-4 col-sms-4 col-smb-12">
+                    <div class="images-container">
+                        <div class="product_icon">
+                            <div class="new-icon"><span>new</span></div>
+                            <div class="sale-icon"><span>sale</span></div>
+                        </div>
+                        <a class="product-image" title="Fusce aliquam" href="/Category/DetailsPage/@listproduct[i].id_Product" rel="author"><img alt="Fusce aliquam" src="~/Assets/upload/Product/@listproduct[i].img"></a>
+                    </div>
+                </div>
+                <div class="product-shop col-sm-8 col-sms-8 col-smb-12">
+                    <div class="f-fix">
+                        <h2 class="product-name"><a title="" href="/Category/DetailsPage/@listproduct[i].id_Product">@listproduct[i].name</a></h2>
+                        <div class="ratings">
+                            <div class="rating-box">
+                                <div style="width:67%" class="rating"></div>
+                            </div>
+                            <span class="amount"><a href="#">1 Review(s)</a></span>
+                        </div>
+                        <div class="price-box">
+                            <p class="special-price">
+                                <span class="price-label">Special Price</span>
+                                <span id="product-price-1" class="price">@listproduct[i].price</span>
+                            </p>
+                
+                        </div>
+                        <div class="desc std">
+                            @listproduct[i].description <a class="link-learn" title="Fusce aliquam" href="#">Learn More</a>
+                        </div>
+                        <div class="actions">
+                            <div class="actions-inner">
+                                <button class="btn btn-danger" title="Add to Cart" type="button" onclick="location.href='/Customer/ThemVaoGioHang/@listproduct[i].id_Product';">Add to Cart</button>
+                                <ul class="add-to-links">
+                                    <li><a title="Wishlist" class="link-wishlist" href="#"><em class="tooltip">Wishlist</em>Add to Wishlist</a></li>
+                                    <li><span class="separator">|</span> <a title="Compare" class="link-compare" href="#"><em class="tooltip">Compare</em>Add to Compare</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    }
+</ol>
+

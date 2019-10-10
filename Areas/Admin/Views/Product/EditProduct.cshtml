@@ -1,0 +1,116 @@
+﻿@using Phone.Models
+@model Product
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Assets/admin/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="~/Assets/admin/css/sb-admin.css" rel="stylesheet">
+<div class="col-md-8 col-xs-offset-2" style="margin-top: 10px">
+    <div class="panel panel-primary" style="border:solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border:solid 1px #d8373e" >Edit Product</div>
+        <div class="panel-body">
+            <form method="post" action="@ViewBag.formAction" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Tiêu đề</div>
+                    <div class="col-md-9">
+                        <input type="text" name="name" class="form-control" value="@if(Model != null){@Model.name}">
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Giá</div>
+                    <div class="col-md-9">
+                        <input type="number" min="0" name="price" class="form-control" value="@if(Model != null){@Model.price}">
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Brand</div>
+                    <div class="col-md-9">
+                        <select name="brand_id" class="form-control" style="width:200px;">
+                            @{
+                                PhoneEntities csdl1 = new PhoneEntities();
+                                var brand = csdl1.Brands.OrderByDescending(tbl => tbl.brand_id);
+                            }
+                            @foreach (var item in brand)
+                            {
+                                <option @if (Model != null && Model.brand_id == item.brand_id) { <text> selected</text>} value="@item.brand_id">@item.Brand_Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Thuộc danh mục</div>
+                    <div class="col-md-9">
+                        <select name="id_Category" class="form-control" style="width:200px;">
+                            @{
+                                PhoneEntities csdl = new PhoneEntities();
+                                var category = csdl.Categories.OrderByDescending(tbl => tbl.id_Category);
+                            }
+                            @foreach (var item in category)
+                            {
+                                <option @if (Model != null && Model.id_Category == item.id_Category) { <text> selected</text>} value="@item.id_Category">@item.name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Giới thiệu</div>
+                    <div class="col-md-9">
+                        <textarea name="description" class="form-control" style="height:250px;">
+		                    @if (Model != null){@Model.description}
+					    </textarea>
+                        <script>
+                            CKEDITOR.replace("description");
+                        </script>
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Chi tiết</div>
+                    <div class="col-md-9">
+                        <textarea name="content" class="form-control" style="height:300px;">
+					        @if (Model != null){@Model.content}
+                        </textarea>
+                        <script>
+                            CKEDITOR.replace("content");
+                        </script>
+                    </div>
+                </div>
+                <!-- end row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        <input type="checkbox" @if (Model != null && Model.hotproduct == true) { <text> checked</text> } name="hotproduct" id="hotproduct"> <label for="hotproduct">Sản phẩm nổi bật</label>
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3">Ảnh</div>
+                    <div class="col-md-9">
+                        <input type="file" name="img">
+                    </div>
+                </div>
+                <!-- end row -->
+                <!-- row -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        <input style="background-color:#d8373e; border:solid 1px #d8373e" type="submit" class="btn btn-primary" value="Process">
+                    </div>
+                </div>
+                <!-- end row -->
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

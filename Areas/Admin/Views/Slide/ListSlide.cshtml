@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "ListSlide";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using Phone.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<Slide>
+
+<link href="~/Assets/admin/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="~/Assets/admin/css/sb-admin.css" rel="stylesheet">
+<div class="col-md-6 col-xs-offset-3" style="margin-top:20px;">
+    <div style="margin-bottom:2px;">
+        <a href="/Admin/Slide/AddSlide" class="btn btn-primary" style="background-color:#d8373e;  border:solid 1px #d8373e">Add Slide</a>
+    </div>
+    <div class="panel panel-primary" style="border:solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border:solid 1px #d8373e">List Slide</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th style="width:30px;text-align:center">STT</th>
+                    <th style="width:100px;text-align:center">Name</th>
+                    <th style="width:100px;text-align:center">Ảnh</th>
+                    <th style="width:30px;text-align:center">Quản lý</th>
+
+                </tr>
+                @{
+                    int stt = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    stt++;
+                <tr>
+                    <td style="text-align:center;">@stt</td>
+                    <td style="text-align:center;">@item.name</td>
+                    <td style="text-align:center;">
+                        @* Server.MapPath("folder") -> lay full duong dan vat ly *@
+                        @if (System.IO.File.Exists(Server.MapPath("~/Assets/Upload/Slide/") + item.img))
+                        {
+                            <img src="~/Assets/Upload/Slide/@item.img" style="width:100px;" />
+                        }
+                    </td>
+                    <td style="text-align:center;">
+                        <a style="color: #d8373e" href="/Admin/Slide/Edit/@item.Slide_id">Edit</a>&nbsp;
+                        <a style="color: #d8373e" href="/Admin/Slide/Delete/@item.Slide_id" onclick="return window.confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+
+                }
+            </table>
+            <style type="text/css">
+                .pagination {
+                    padding: 0px;
+                    margin: 0px;
+                    background-color: #d9534f;
+                    border: solid 1px #d43f3a;
+                }
+            </style>
+            @Html.PagedListPager(Model, page => Url.Action("ListSlide", new { page }))
+        </div>
+    </div>
+</div>
+

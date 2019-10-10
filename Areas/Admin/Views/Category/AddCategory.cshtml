@@ -1,0 +1,44 @@
+﻿@using Phone.Models
+@model Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-8 col-xs-offset-2" style="margin-top:20px;">
+    <div class="panel panel-primary" style="border:solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border:solid 1px #d8373e">AddCategory</div>
+        <div class="panel-body">
+            <form  enctype="multipart/form-data" method="post" action="@ViewBag.formAction">
+                <!-- rows -->
+                @Html.AntiForgeryToken()
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Name</div>
+
+                    <div class="col-md-10">
+                        <input type="text" value="@if(Model!=null){@Model.name}" name="name" class="form-control" required>
+
+                        <input style="margin-top:10px" type="checkbox" @if (Model != null && Model.hotcategory == true) { <text> checked</text> } name="hotcategory" id="hotcategory"> <label for="hotcategory">danh mục nổi bật</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Ảnh</div>
+                    <div class="col-md-10">
+                        <input type="file" name="img">
+                    </div>
+                </div>
+
+                <!-- end rows -->
+                <!-- rows -->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        <input style="background-color:#d8373e" type="submit" value="Process" class="btn btn-primary">
+                    </div>
+                </div>
+                <!-- end rows -->
+            </form>
+        </div>
+    </div>
+</div>
+

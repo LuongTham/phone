@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "ListProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using Phone.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<Product>
+<link href="~/Assets/admin/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="~/Assets/admin/css/sb-admin.css" rel="stylesheet">
+<div class="col-md-12" style="margin-top:10px">
+    <div style="margin-bottom:5px;">
+        <a href="/Admin/Product/Add" class="btn btn-primary" style="background-color:#d8373e; border: solid 1px #d8373e">Add Product</a>
+    </div>
+    <div class="panel panel-primary" style="border: solid 1px #d8373e">
+        <div class="panel-heading" style="background-color:#d8373e; border: solid 1px #d8373e">List Product</div>
+        <div class="panel-body">
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th style="width:30px;text-align:center">STT</th>
+                    <th style="width:100px;text-align:center">Ảnh</th>
+                    <th style="text-align:center">Tên sản phẩm</th>
+                    <th style="text-align:center">Giới thiệu</th>
+                    <th style="text-align:center">Brand</th>
+                    <th style="width:100px;text-align:center">Hot Product</th>
+                    <th style="width:100px;text-align:center">Thuộc danh mục</th>
+                    <th style="width:70px;text-align:center">Giá</th>
+                    <th style="text-align:center">Chi tiết</th>
+                    <th style="width:70px;text-align:center">Quản lý</th>
+                </tr>
+                @{
+                    int stt = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    stt++;
+                <tr>
+                    <td style="text-align:center;">@stt</td>
+                    <td style="text-align:center;">
+                        @* Server.MapPath("folder") -> lay full duong dan vat ly *@
+                        @if (System.IO.File.Exists(Server.MapPath("~/Assets/Upload/Product/") + item.img))
+                        {
+                            <img src="~/Assets/Upload/Product/@item.img" style="width:100px;" />
+                        }
+                    </td>
+                    <td style="text-align:left">@item.name</td>
+                    <td style="text-align:left">@item.description</td>
+                    <td style="text-align:left">
+                        @{
+                            PhoneEntities db1 = new PhoneEntities();
+                            var brand = db1.Brands.Where(tbl => tbl.brand_id == item.brand_id).FirstOrDefault();
+                        }
+                        @if (brand != null)
+                        {<text>@brand.Brand_Name</text>}
+                    </td>
+
+                    <td style="text-align:center">
+                        @if (item.hotproduct == true)
+                        {
+                            <span class="glyphicon glyphicon-check"></span>
+                        }
+                    <td style="text-align:left;">
+                        @{
+                            PhoneEntities db = new PhoneEntities();
+                            var category = db.Categories.Where(tbl => tbl.id_Category == item.id_Category).FirstOrDefault();
+                        }
+                        @if (category != null)
+                        {<text>@category.name</text>}
+                    </td>
+                    <td style="text-align:left;">@item.price</td>
+                    <td style="text-align:left">@item.content</td>
+                    <td style="text-align:center;">
+                        <a style="color: #d8373e" href="/Admin/Product/Edit/@item.id_Product">Edit</a>&nbsp;
+                        <a style="color: #d8373e" href="/Admin/Product/Delete/@item.id_Product" onclick="return window.confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+                }
+            </table>
+            <style type="text/css">
+                .pagination {
+                    padding: 0px;
+                    margin: 0px;
+                    background-color: #d9534f;
+                    border: solid 1px #d43f3a;
+                }
+            </style>
+            @Html.PagedListPager(Model, page => Url.Action("ListProduct", new { page }))
+        </div>
+    </div>
+</div>
+

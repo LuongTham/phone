@@ -1,0 +1,84 @@
+﻿@using Phone.Models
+@{
+    Layout = null;
+}
+@{
+    PhoneEntities db = new PhoneEntities();
+    var category = db.Categories.OrderByDescending(tbl => tbl.id_Category).ToList();
+    var brand = db.Brands.OrderByDescending(tbl => tbl.brand_id).ToList();
+}
+<div class="col-sm-3 col-left">
+    <div class="block block-layered-nav">
+        <div class="block-title">
+            <strong><span>Sort By</span></strong>
+        </div>
+        <div class="block-content">
+            <p class="block-subtitle">Shopping Options</p>
+            <div id="narrow-by-list">
+                <div class="layered layered-Category">
+                    <h2>Category</h2>
+                    <div class="content-shopby">
+                        <ol>
+                            @foreach (var item in category)
+                            {
+                                <li><a href="/ListCategoryBrand/_ListCategoryBrand/@item.id_Category">@item.name</a></li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+                <div class="layered layered-price">
+                    <h2>Price</h2>
+                    <div class="content-shopby">
+                        <div id="slider-range"></div>
+                        <form action="/SearchPrice/_SearchPrice">
+                            <input type="text" name="first_price" class="form-control">
+                            <input type="text" name="last_price" class="form-control">
+                            <button id="search_price" type="submit" class="btn btn-default">SHOW</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="layered layered-Manufacturer">
+                    <h2>Manufacturer</h2>
+                    <div class="content-shopby">
+                        <ol>
+                            @foreach (var item in brand)
+                            {
+                                <li><a href="#">@item.Brand_Name</a></li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+                <div class="layered layered-Color">
+                    <h2>Color</h2>
+                    <div class="content-shopby">
+                        <ol>
+                            <li><a href="#">Red</a></li>
+                            <li><a href="#">Orange</a></li>
+                            <li><a href="#">Blue</a></li>
+                            <li><a href="#">Black</a></li>
+                            <li><a href="#">Green</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /sort -->
+    <div class="block block-list">
+        <div class="block-title">
+            <strong><span>Compare</span></strong>
+        </div>
+        <div class="block-content">
+            <p class="empty">You have no items to compare.</p>
+        </div>
+    </div><!-- /.compare -->
+    <div class="banner-left">
+        <a href="#"><img src="/Assets/Frontend/images/ads/ads-01.jpg" alt=""></a>
+        <div class="banner-content">
+            <h1>sale up to</h1>
+            <h2>20% off</h2>
+            <p>on selected products</p>
+            <a href="#">buy now</a>
+        </div>
+    </div>
+   @Html.Partial("~/Views/Shared/_SpecialOffer.cshtml")
+</div><!-- /.col-left -->

@@ -1,0 +1,140 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="#">
+
+    <title>Galio</title>
+    <link href="/Assets/Frontend/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/animate.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/owl.carousel.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/jquery-ui.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/style.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond./js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<div class="header-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/Home/Index" class="logo"><img src="/Assets/Frontend/images/logo.png" alt=""></a>
+            </div>
+            <div class="col-md-9">
+                <div class="support-client">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="box-container time">
+                                <div class="box-inner">
+                                    <h2>working time</h2>
+                                    <p>Mon- Sun: 8.00 - 18.00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="box-container free-shipping">
+                                <div class="box-inner">
+                                    <h2>Free shipping</h2>
+                                    <p>On order over $199</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="box-container money-back">
+                                <div class="box-inner">
+                                    <h2>Money back 100%</h2>
+                                    <p>Within 30 Days after delivery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.support-client -->
+                <form class="form-search">
+                    <input type="text" class="input-text" name="q" id="search" placeholder="Search products...">
+                    <div class="dropdown">
+                        <button type="button" class="btn" data-toggle="dropdown">All category <span class="fa fa-angle-down"></span></button>
+                    </div>
+                    <button type="submit" class="btn btn-danger"><span class="fa fa-search"></span></button>
+                </form>
+                <div class="mini-cart">
+                    <div class="top-cart-title">
+                        <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
+                            your cart
+                            <span class="price">$45.00</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="cart-listing">
+                                <div class="media">
+                                    <div class="media-left"><a href="#"><img src="/Assets/Frontend/images/products/11.jpg" class="img-responsive" alt=""></a></div>
+                                    <div class="media-body">
+                                        <button type="button" class="remove-cart-item">&times;</button>
+                                        <h4>Accumsan elit</h4>
+                                        <div class="mini-cart-qty">Qty:2</div>
+                                        <div class="mini-cart-price">$ 64.00</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"><a href="#"><img src="/Assets/Frontend/images/products/13.jpg" class="img-responsive" alt=""></a></div>
+                                    <div class="media-body">
+                                        <button type="button" class="remove-cart-item">&times;</button>
+                                        <h4>Accumsan elit</h4>
+                                        <div class="mini-cart-qty">Qty:2</div>
+                                        <div class="mini-cart-price">$ 64.00</div>
+                                    </div>
+                                </div>
+                            </div><!-- /.cart-listing -->
+                            <div class="mini-cart-subtotal">Shipping: <span class="price">$5.00</span></div>
+                            <div class="mini-cart-subtotal">Total: <span class="price">$200.00</span></div>
+                            <div class="checkout-btn">
+                                <a href="#" class="btn btn-default btn-md fwb">CHECK OUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="mega-container visible-lg visible-md">
+                    <div class="navleft-container">
+                        <div class="mega-menu-title"><h3>Category</h3></div>
+                        <div class="mega-menu-category" style="display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <ul class="menu clearfix visible-lg visible-md" style="    width: 1000px;">
+                    <li><a href="/Home/Index">Home</a></li>
+                    <li><a href="/Category/ListCategory">List Page</a></li>
+                    <li><a href="/GridPage/CategoryGrid">Grid Page</a></li>
+                    <li><a href="/Blog/Blog">Blog</a></li>
+                    <li><a href="/Blog/BlogDetails">Blog details</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- /.header-bottom -->
+</html>
+@RenderBody()
+
+
+
+
+
+

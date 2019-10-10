@@ -1,0 +1,285 @@
+﻿@using Phone.Models;
+@{
+    ViewBag.Title = "DetailsPage";
+    //Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@{ 
+    PhoneEntities db = new PhoneEntities();
+    var UpsellProd = db.ProdSales.OrderByDescending(tbl => tbl.id_prodSale).ToList();
+    var ProdDetail = db.Products.OrderByDescending(tbl => tbl.id_Product).ToList();
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="#">
+
+    <title>Galio</title>
+    <link href="/Assets/Frontend/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/animate.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/owl.carousel.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/jquery.bxslider.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/cloud-zoom.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/style.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    @if (Session["email"] != null)
+    {
+        @Html.Partial("~/Views/Shared/_HeaderLoggedIn.cshtml")
+    }
+    @if (Session["email"] == null)
+    {
+        @Html.Partial("~/Views/Shared/_Header.cshtml")
+    }
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Category</a></li>
+                <li class="active">Detail Product</li>
+            </ul>
+        </div>
+    </div><!-- /.breadcrumbs -->
+
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-right">
+                    <div class="product-view">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="product-img-box">
+                                    <p class="product-image">
+                                        <a href="/Assets/Frontend/images/products/1.jpg" class="cloud-zoom" id="ma-zoom1">
+                                            <img src="~/Assets/upload/Product/@Model.img" alt="Fusce aliquam" title="Fusce aliquam" />
+                                        </a>
+                                    </p>
+                                    <div class="more-views thumbnail-container">
+                                        <ul class="bxslider">
+                                            @foreach (var item1 in ProdDetail)
+                                            {
+                                                <li class="thumbnail-item">
+                                                    <a href="/Assets/Frontend/images/products/1.jpg" class="cloud-zoom-gallery" title="" name="images/products/1.jpg" rel="useZoom: 'ma-zoom1', smallImage: 'images/products/1.jpg'">
+                                                        <img src="~/Assets/upload/Product/@item1.img" alt="" />
+                                                    </a>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-shop col-sm-7">
+                                <div class="product-name">
+                                    <h1>Fusce aliquam</h1>
+                                </div>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div style="width:67%" class="rating"></div>
+                                    </div>
+                                    <span class="amount"><a href="#">1 Review(s)</a></span>
+                                </div>
+                                <div class="box-container2">
+                                    <div class="price-box">
+                                        <p class="special-price">
+                                            <span class="price-label">Special Price</span>
+                                            <span id="product-price-1" class="price">@Model.price</span>
+                                        </p>
+                                        <p class="old-price">
+                                            <span class="price-label">Regular Price:</span>
+                                            <span id="old-price-1" class="price">$170.00</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="short-description">
+                                    <div class="std">Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis.</div>
+                                </div>
+                                <p class="availability in-stock">Availability: <span>In stock</span></p>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 control-label">Size <em>*</em></label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control">
+                                                <option value="">-- Please Select --</option>
+                                                <option value="2">L +$2.00</option>
+                                                <option value="1">M +$1.00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 control-label">Color <em>*</em></label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control">
+                                                <option value="">-- Please Select --</option>
+                                                <option value="4">black +$2.00</option>
+                                                <option value="3">blue +$1.00</option>
+                                                <option value="5">yellow +$1.00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 control-label">Quantity:</label>
+                                        <div class="col-md-3 col-sm-5">
+                                            <div class="input-group qty">
+                                                <span class="input-group-btn">
+                                                    <button class="btn" type="button">-</button>
+                                                </span>
+                                                <input type="text" class="form-control" value="3">
+                                                <span class="input-group-btn">
+                                                    <button class="btn" type="button">+</button>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-danger btn-cart" onclick="location.href='/Customer/ThemVaoGioHang/@Model.id_Product';">Add to cart</button>
+                                    <button type="button" class="btn btn-default btn-wishlist">Add to wishlist</button>
+                                    <button type="button" class="btn btn-default btn-compare">Add to compare</button>
+                                </form>
+                            </div><!-- /.product-shop -->
+                        </div>
+                        <div class="product-tab tab-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#product-desc" data-toggle="tab">PRODUCT DESCRIPTION</a></li>
+                                <li><a href="#product-review" data-toggle="tab">CUSTOMER REVIEW</a></li>
+                                <li><a href="#product-tags" data-toggle="tab">PRODUCT TAGS</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="product-desc">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus
+                                </div>
+                                <div class="tab-pane" id="product-review">...</div>
+                                <div class="tab-pane" id="product-tags">...</div>
+                            </div>
+                        </div><!-- /.product-tab -->
+                    </div><!-- /.product-view -->
+                    <div class="featuredproductslider-container">
+                        <div class="title-group1"><h2>Upsell products</h2></div>
+                        <div id="featured-products" class="owl-container">
+                            <div class="owl">
+                                @foreach (var item in UpsellProd)
+                                {
+                                    <div class='productslider-item item'>
+                                        <div class="item-inner">
+                                            <div class="images-container">
+                                                <div class="product_icon">
+                                                    <div class='new-icon'><span>new</span></div>
+                                                </div>
+                                                <a href="#" title="Nunc facilisis" class="product-image">
+                                                    <img src="~/Assets/upload/Product/@item.img" alt="Nunc facilisis" />
+                                                </a>
+                                                <div class="box-hover">
+                                                    <ul class="add-to-links">
+                                                        <li><a href="#" class="link-quickview">Quick View</a></li>
+                                                        <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
+                                                        <li><a href="#" class="link-compare">Add to Compare</a></li>
+                                                        <li><a href="#" class="link-cart">Add to Cart</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="des-container">
+                                                <h2 class="product-name"><a href="#" title="Nunc facilisis">@item.name</a></h2>
+                                                <div class="price-box">
+                                                    <p class="special-price">
+                                                        <span class="price-label">Special Price</span>
+                                                        <span class="price">@item.newprice</span>
+                                                    </p>
+                                                    <p class="old-price">
+                                                        <span class="price-label">Regular Price: </span>
+                                                        <span class="price">@item.oldprice</span>
+                                                    </p>
+                                                </div>
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                        <div class="rating" style="width:67%"></div>
+                                                    </div>
+                                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.featuredproductslider-container -->
+        </div><!-- /.col-right -->
+
+    </div>
+    </div>
+    </div><!-- /.main -->
+    @Html.Partial("~/Views/Shared/_TopCategory.cshtml")
+
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/Assets/Frontend/js/bootstrap.min.js"></script>
+    <script src="/Assets/Frontend/js/owl.carousel.min.js"></script>
+    <script src="/Assets/Frontend/js/jquery.bxslider.min.js"></script>
+    <script src="/Assets/Frontend/js/cloud-zoom.js"></script>
+    <script src="/Assets/Frontend/js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /* special-offer slider */
+            $("#special-offer .owl").owlCarousel({
+                autoPlay: false,
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [991, 1],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                rewindSpeed: 3000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+            /* featured-products slider */
+            $("#featured-products .owl").owlCarousel({
+                autoPlay: false,
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [991, 2],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                rewindSpeed: 3000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+            /* .thumbnail-container product image slider */
+            $('.thumbnail-container .bxslider').bxSlider({
+                slideWidth: 94,
+                slideMargin: 5,
+                minSlides: 4,
+                maxSlides: 4,
+                pager: false,
+                speed: 500,
+                pause: 3000
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewBag.Title = "ListBrand";
+    //Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="#">
+
+    <title>Galio</title>
+    <link href="/Assets/Frontend/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/animate.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/owl.carousel.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/jquery-ui.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/style.css" rel="stylesheet">
+    <link href="/Assets/Frontend/css/responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0//Assets/Frontend/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond./Assets/Frontend/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    @if (Session["email"] != null)
+    {
+        @Html.Partial("~/Views/Shared/_HeaderLoggedIn.cshtml")
+    }
+    @if (Session["email"] == null)
+    {
+        @Html.Partial("~/Views/Shared/_Header.cshtml")
+    }
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Category Grid</li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                @Html.Partial("~/Views/Shared/_SideNave.cshtml")
+                <div class="col-sm-9 col-right">
+                    <div class="banner">
+                        <a href="#"><img alt="" src="/Assets/Frontend/images/ads/ads-17.jpg"></a>
+                    </div>
+                    <div class="page-title">
+                        <h1>CATEGORY GRID</h1>
+                    </div>
+                    <div class="toolbar">
+                        <div class="sorter">
+                            <p class="view-mode">
+                                <label>View as:</label>
+                                <strong class="grid" title="Grid">Grid</strong>&nbsp;
+                                <a class="list" title="List" href="#">List</a>&nbsp;
+                            </p>
+                        </div><!-- /.sorter -->
+                        <div class="pager">
+                            <div class="sort-by hidden-xs">
+                                <label>Sort By:</label>
+                                <select class="form-control input-sm">
+                                    <option selected="selected">Position</option>
+                                    <option>Name</option>
+                                    <option>Price</option>
+                                </select>
+                                <a title="Set Descending Direction" href="#"><span class="fa fa-sort-amount-desc"></span></a>
+                            </div>
+                            <div class="limiter hidden-xs">
+                                <label>Show:</label>
+                                <div class="limiter-inner">
+                                    <select class="form-control input-sm">
+                                        <option>9</option>
+                                        <option selected="selected">12</option>
+                                        <option>24</option>
+                                        <option>36</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><!--- /.pager -->
+                    </div><!-- /.toolbar -->
+
+                    @Html.Partial("~/Views/Shared/_ListBrand1.cshtml")
+                    <div class="toolbar">
+                        <div class="sorter">
+                            <p class="view-mode">
+                                <label>View as:</label>
+                                <strong class="grid" title="Grid">Grid</strong>&nbsp;
+                                <a class="list" title="List" href="#">List</a>&nbsp;
+                            </p>
+                        </div><!-- /.sorter -->
+                        <div class="pager">
+                            <div class="sort-by hidden-xs">
+                                <label>Sort By:</label>
+                                <select class="form-control input-sm">
+                                    <option selected="selected">Position</option>
+                                    <option>Name</option>
+                                    <option>Price</option>
+                                </select>
+                                <a title="Set Descending Direction" href="#"><span class="fa fa-sort-amount-desc"></span></a>
+                            </div>
+                            <div class="limiter hidden-xs">
+                                <label>Show:</label>
+                                <div class="limiter-inner">
+                                    <select class="form-control input-sm">
+                                        <option>9</option>
+                                        <option selected="selected">12</option>
+                                        <option>24</option>
+                                        <option>36</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><!-- /.pager -->
+                    </div><!-- /.toolbar -->
+                </div><!-- /.col-right -->
+            </div>
+        </div>
+    </div><!-- /.main -->
+    @Html.Partial("~/Views/Shared/_TopCategory.cshtml")
+
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/Assets/Frontend/js/bootstrap.min.js"></script>
+    <script src="/Assets/Frontend/js/owl.carousel.min.js"></script>
+    <script src="/Assets/Frontend/js/jquery-ui.min.js"></script>
+    <script src="/Assets/Frontend/js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /* special-offer slider */
+            $("#special-offer .owl").owlCarousel({
+                autoPlay: false,
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [991, 1],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1],
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                rewindSpeed: 3000,
+                navigation: true,
+                stopOnHover: true,
+                pagination: false,
+                scrollPerPage: true,
+            });
+
+            /* slider price */
+            var currencies = "$";
+            var toolbar_status = "1";
+            var rate = "1";
+            var min = "99"
+            min = Number(min);
+            var max = "999"
+            max = Number(max);
+            var currentMinPrice = "99"
+            currentMinPrice = Number(currentMinPrice);
+            var currentMaxPrice = "999"
+            //alert('min: '+min+'--max: '+ max+ 'currentMin: '+currentMinPrice);
+            currentMaxPrice = Number(currentMaxPrice);
+            var params = "";
+            params = $.trim(params);
+            //slider
+            $("#slider-range").slider({
+                range: true,
+                min: min,
+                max: max,
+                values: [currentMinPrice, currentMaxPrice],
+                slide: function (event, ui) {
+                    $("#amount").val(currencies + ui.values[0] + " - " + currencies + ui.values[1]);
+                    $('input[name="first_price"]').val(ui.values[0]);
+                    $('input[name="last_price"]').val(ui.values[1]);
+                },
+                stop: function (event, ui) {
+                }
+            });
+
+            $("#amount").val(currencies + $("#slider-range").slider("values", 0) +
+                " - " + currencies + $("#slider-range").slider("values", 1));
+            $('input[name="first_price"]').val($("#slider-range").slider("values", 0));
+            $('input[name="last_price"]').val($("#slider-range").slider("values", 1));
+
+            //search price from input box
+            $('#search_price').each(function () {
+                $(this).live('click', function () {
+                    return false;
+                })
+            });
+            $('#slider-range a:first').addClass('first_item');
+            $('#slider-range a:last').addClass('last_item');
+
+        });
+    </script>
+</body>
+</html>
+

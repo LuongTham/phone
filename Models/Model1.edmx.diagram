@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eee8e115836f4c8b953c3affa1413419" Name="Diagram1">
+        <EntityTypeShape EntityType="PhoneModel.Category" Width="1.5" PointX="1" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneModel.News" Width="1.5" PointX="3.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneModel.Product" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneModel.User" Width="1.5" PointX="4.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneModel.Brand" Width="1.5" PointX="2.75" PointY="3.25" />
+        <EntityTypeShape EntityType="PhoneModel.Slide" Width="1.5" PointX="6.375" PointY="5.25" />
+        <EntityTypeShape EntityType="PhoneModel.ProdSale" Width="1.5" PointX="8.375" PointY="2.625" />
+        <EntityTypeShape EntityType="PhoneModel.Customer" Width="1.5" PointX="0.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

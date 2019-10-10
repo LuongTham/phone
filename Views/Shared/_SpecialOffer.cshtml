@@ -1,0 +1,47 @@
+﻿@using Phone.Models
+@{
+    Layout = null;
+}
+@{
+    PhoneEntities db = new PhoneEntities();
+    var Special = db.News.OrderByDescending(tbl => tbl.id_News).ToList();
+
+}
+
+<div class="block">
+    <div class="title-group"><h2>Special Offer</h2></div>
+    <div id="special-offer" class="owl-container">
+        <div class="owl">
+            @for (int i =0; i<4; i++)
+            {
+            <div class='sepecialoffer-item item'>
+                @for (int j = 0; j < 5; j++)
+                {
+                    <div class="item-inner first">
+                        <div class="images-container">
+                            <a href="#" title="Primis in faucibus" class="product-image">
+                                <img src="~/Assets/upload/News/@Special[j].img" alt="Primis in faucibus" />
+                            </a>
+                        </div>
+                        <div class="des-container">
+                            <h2 class="product-name"><a href="#" title="Primis in faucibus">@Special[j].name</a></h2>
+                            <div class="price-box">
+                                <p class="special-price">
+                                    <span class="price">@Special[j].price</span>
+                                </p>
+                            </div>
+                            <div class="ratings">
+                                <div class="rating-box">
+                                    <div class="rating" style="width:87%"></div>
+                                </div>
+                                <span class="amount"><a href="#">1 Review(s)</a></span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            }
+        </div>
+    </div><!-- /.owl-container -->
+</div><!-- /.block - Special offer -->

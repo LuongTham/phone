@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PhoneModelStoreContainer" CdmEntityContainer="PhoneEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="PhoneModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="hotcategory" ColumnName="hotcategory" />
+          <ScalarProperty Name="id_Category" ColumnName="id_Category" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="PhoneModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="id_News" ColumnName="id_News" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="hotnews" ColumnName="hotnews" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="PhoneModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="id_Product" ColumnName="id_Product" />
+          <ScalarProperty Name="id_Category" ColumnName="id_Category" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="hotproduct" ColumnName="hotproduct" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PhoneModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="PhoneModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="Brand_Name" ColumnName="Brand_Name" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slides">
+      <EntityTypeMapping TypeName="PhoneModel.Slide">
+        <MappingFragment StoreEntitySet="Slide">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Slide_id" ColumnName="Slide_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdSales">
+      <EntityTypeMapping TypeName="PhoneModel.ProdSale">
+        <MappingFragment StoreEntitySet="ProdSale">
+          <ScalarProperty Name="HotDeals" ColumnName="HotDeals" />
+          <ScalarProperty Name="HotSale" ColumnName="HotSale" />
+          <ScalarProperty Name="id_Category" ColumnName="id_Category" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Bestseller" ColumnName="Bestseller" />
+          <ScalarProperty Name="Random" ColumnName="Random" />
+          <ScalarProperty Name="oldprice" ColumnName="oldprice" />
+          <ScalarProperty Name="newprice" ColumnName="newprice" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_prodSale" ColumnName="id_prodSale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="PhoneModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_Customer" ColumnName="id_Customer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
